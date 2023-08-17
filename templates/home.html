@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+Cyclone
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="jumbotron">
+      <h1 class="display-4">Cyclone Intensity Prediction</h1>
+      <p class="lead">Tropical cyclones are one of the biggest threats to life and property even in the formative stages of their development. They include a number of different hazards that can individually cause significant impacts on life and property, such as storm surge, flooding, extreme winds, tornadoes and lighting. 
+        Combined, these hazards interact with one another and substantially increase the potential for loss of life and material damage.</p>
+      <hr class="my-4">
+    </div>
+        <div class="container">
+        <form action="{{ url_for('predict_cyclone_intensity') }}" method="POST">
+        <table border="2"  align="center" name="t">
+            
+            <tr>
+                <th>Time</th>
+                <th colspan="1">Latitude</th>
+                <th colspan="1">Longitude</th>
+                <th colspan="1">Wind speed</th>
+            </tr>
+                {% for _ in range(3,-1,-1) %}
+                <tr>
+                    <td bgcolor="white">{{6*_}}h:</td>
+                    <td bgcolor="black"><input type="text" name="latitude{{ _ }}" required></td>
+                    <td bgcolor="black"><input type="text" name="longitude{{ _ }}" required></td>
+                    <td bgcolor="black"><input type="text" name="windSpeed{{ _ }}" required></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="d-grid gap-2">
+            <button class="btn btn-outline-dark" type="submit">Submit</button>
+            </div>
+        </form>
+        </div>
+        <br>
+        {% if r %}
+        <div class="container">
+            <h1>Result:</h1>
+            <br>
+            <hr>
+
+            <h1>{{ r }}</h1>
+        </div>
+        {% endif %}
+{% endblock %}
+

@@ -1,0 +1,18 @@
+body {
+    background-image: url("/static/images/cyc.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.container {
+display: flex;
+align-items: center;
+justify-content: center;
+background-size: 100% 100%;
+padding-top: 200px;
+}
+
+th ,td{
+  border: 1px solid black; /* Add border style to the <td> elements */
+  background-color: lightgray; /* Set background color for <td> elements */
+}
